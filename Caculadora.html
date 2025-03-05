@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .calculadora {
+            background-color: #8B4513; /* Cor marrom */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .visor {
+            width: 100%;
+            height: 50px;
+            font-size: 24px;
+            text-align: center; /* Centralizar o texto */
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .botoes button {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .botoes button:active {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <div class="calculadora">
+        <input type="text" class="visor" id="visor" readonly>
+        <div class="botoes">
+            <button onclick="atualizarVisor('7')">7</button>
+            <button onclick="atualizarVisor('8')">8</button>
+            <button onclick="atualizarVisor('9')">9</button>
+            <button onclick="atualizarVisor('/')">/</button>
+            <button onclick="atualizarVisor('4')">4</button>
+            <button onclick="atualizarVisor('5')">5</button>
+            <button onclick="atualizarVisor('6')">6</button>
+            <button onclick="atualizarVisor('*')">*</button>
+            <button onclick="atualizarVisor('1')">1</button>
+            <button onclick="atualizarVisor('2')">2</button>
+            <button onclick="atualizarVisor('3')">3</button>
+            <button onclick="atualizarVisor('-')">-</button>
+            <button onclick="atualizarVisor('0')">0</button>
+            <button onclick="atualizarVisor('.')">.</button>
+            <button onclick="calcularResultado()">=</button>
+            <button onclick="atualizarVisor('+')">+</button>
+            <button onclick="limparVisor()">C</button>
+            <button onclick="apagarUltimo()">←</button>
+        </div>
+    </div>
+
+    <script>
+        function atualizarVisor(valor) {
+            document.getElementById('visor').value += valor;
+        }
+
+        function limparVisor() {
+            document.getElementById('visor').value = '';
+        }
+
+        function apagarUltimo() {
+            let visor = document.getElementById('visor');
+            visor.value = visor.value.slice(0, -1);
+        }
+
+        function calcularResultado() {
+            let visor = document.getElementById('visor');
+            try {
+                visor.value = eval(visor.value);
+            } catch (e) {
+                visor.value = 'Erro';
+            }
+        }
+    </script>
+</body>
+</html>
+
+username.github.io/
+├── Radio_web.html
+└── images.jpg
